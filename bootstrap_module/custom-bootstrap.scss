@@ -1,0 +1,9 @@
+// Import Bootstrap functions first
+@import "node_modules/bootstrap/scss/functions";
+
+// Override variables here
+$primary: #ff5722;          // Example: a custom orange primary color
+$border-radius: 1rem;       // Custom border radius
+
+// Import the rest of Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";

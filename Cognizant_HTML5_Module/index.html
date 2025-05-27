@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Community Event Portal</title>
+
+
+  <!-- Google Font Import -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+
+
+  <!-- ✅ Link External CSS (should be outside the style block) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ✅ Embedded Internal Styles -->
+  <style>
+    #welcomeBanner {
+      background-color: #007BFF;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .event-card button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.event-card h3 {
+  margin: 0 0 5px;
+}
+
+
+    body {
+      background-color: #f2f2f2; /* Light grey background */
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .event-img {
+      border: 3px solid #007BFF;
+      border-radius: 8px;
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    figure {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    figcaption {
+      font-style: italic;
+      margin-top: 5px;
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: separate;
+      border-spacing: 15px 10px;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: top;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+      background-color: #f0f0f0;
+      margin-bottom: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    #registration {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 15px;
+      border: 2px solid #007BFF;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    #registration label {
+      font-weight: bold;
+    }
+
+    #registration input,
+    #registration select,
+    #registration textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    #registration button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #registration button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+</head>
+<body>
+
+    <!-- Category Filter -->
+<label for="categoryFilter">Filter by Category:</label>
+<select id="categoryFilter">
+  <option value="All">All Categories</option>
+  <option value="Music">Music</option>
+  <option value="Art">Art</option>
+  <option value="Market">Market</option>
+  <option value="Literature">Literature</option>
+  <option value="Sports">Sports</option>
+</select>
+
+<!-- Search Box -->
+<label for="searchBox">Search Event:</label>
+<input type="text" id="searchBox" placeholder="Search event name..." />
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="help.html" target="_blank" rel="noopener noreferrer">Help</a></li>
+    </ul>
+  </nav>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">
+    Welcome back, <span class="highlight">Valued Resident!</span>
+    <br />
+    Don’t miss our <span style="color: red; font-weight: bold;">special offer</span> on upcoming community events!
+  </div>
+
+  <!-- Main -->
+<main>
+  <section id="home">
+    <h1 class="highlight">Welcome to the Local Community Event Portal</h1>
+    <p>This portal helps residents register for events, check locations, and access services.</p>
+  </section>
+
+  <!-- Events Gallery (now dynamic) -->
+  <section id="events">
+    <h2>Events Gallery</h2>
+    
+    <!-- Dynamic Event Container -->
+    <div id="eventContainer">
+      <div id="spinner">⏳ Loading events...</div>
+      <!-- JS will populate this with cards -->
+    </div>
+
+    <button id="registerBtn">Show Events</button>
+
+<div id="eventCards" style="display: none;">
+  <div class="event-card">🎤 Tech Talk</div>
+  <div class="event-card">🎨 Art Workshop</div>
+  <div class="event-card">🏃‍♀️ Marathon</div>
+</div>
+
+
+
+  </section>
+
+  <!-- Registration Form -->
+  <section id="registration">
+    <h2>Event Registration Form</h2>
+
+    <!-- 📹 Event Promo Video -->
+    <h3>Event Promo Video</h3>
+    <video id="eventVideo" width="320" height="240" controls oncanplay="videoReady()">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <p id="videoStatus" style="color: green; font-weight: bold;"></p>
+
+    <form id="eventForm">
+      <label for="name">Name:</label><br />
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required autofocus /><br /><br />
+      <div id="nameError" class="error"></div>
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" placeholder="example@domain.com" required /><br /><br />
+      <div id="emailError" class="error"></div>
+
+      <label for="phone">Phone Number:</label><br />
+      <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit number" onblur="validatePhone()" required /><br />
+      <div id="phoneError" class="error"></div>
+      <small id="phoneError" style="color: red;"></small><br />
+
+      <label for="date">Event Date:</label><br />
+      <input type="date" id="date" name="date" required /><br /><br />
+      <div id="dateError" class="error"></div>
+
+      <label for="eventType">Event Type:</label><br />
+      <select id="eventType" name="eventType" required>
+        <option value="" disabled selected>Select an event</option>
+        <option value="cleanup">Community Cleanup Day</option>
+        <option value="festival">Local Festival</option>
+        <option value="workshop">Art Workshop</option>
+        <option value="run">Charity Run</option>
+        <option value="music">Community Music Night</option>
+        <option value="planting">Garden Planting Day</option>
+      </select><br /><br />
+
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" placeholder="Your message or questions" rows="4" cols="30"></textarea><br /><br />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <button id="clearPrefs" type="button" style="margin-top: 10px;">Clear Preferences</button>
+    <button id="findNearby" type="button" style="margin-top: 10px;">Find Nearby Events</button>
+
+    <output id="confirmation" style="display:block; margin-top:15px; font-weight:bold; color:green;"></output>
+    <div id="geoOutput" style="margin-top: 15px; color: blue; font-weight: bold;"></div>
+    <div id="event-list"></div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Reach out to the city council for more information.</p>
+  </section>
+</main>
+
+<!-- Link your script file -->
+<script src="main.js"></script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Local City Council</p>
+  </footer>
+
+  <script>
+  const form = document.getElementById('eventForm');
+  const output = document.getElementById('confirmation');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Clear previous error messages
+    ['nameError', 'emailError', 'dateError', 'eventError', 'phoneError'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '';
+    });
+
+    // Destructure form elements
+    const { name, email, date, eventType, phone } = form.elements;
+
+    // Validation flag
+    let isValid = true;
+
+    // Name validation
+    if (!name.value.trim() || name.value.trim().length < 2) {
+      document.getElementById('nameError').textContent = "Please enter your full name (min 2 characters).";
+      isValid = false;
+    }
+
+    // Email validation
+    if (!email.value || !email.checkValidity()) {
+      document.getElementById('emailError').textContent = "Please enter a valid email address.";
+      isValid = false;
+    }
+
+    // Date validation
+    if (!date.value) {
+      document.getElementById('dateError').textContent = "Please select a date.";
+      isValid = false;
+    }
+
+    // Event selection validation
+    if (!eventType.value) {
+      document.getElementById('eventError').textContent = "Please select an event.";
+      isValid = false;
+    }
+
+    // Phone validation
+    if (!validatePhone()) {
+      console.warn("Phone validation failed. Submission stopped.");
+      isValid = false;
+    }
+
+    if (!isValid) {
+      console.warn("Form validation failed. Submission stopped.");
+      return;
+    }
+
+    // Prepare user data
+    const userData = {
+      name: name.value.trim(),
+      email: email.value.trim(),
+      date: date.value,
+      eventType: eventType.options[eventType.selectedIndex].text,
+      phone: phone.value.trim()
+    };
+
+    // Show loading message
+    output.textContent = "Submitting your registration...";
+
+    // Simulate delayed server response (2 seconds)
+    setTimeout(() => {
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      })
+        .then(response => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.json();
+        })
+        .then(data => {
+          output.textContent = `✅ Thank you, ${userData.name}! You have successfully registered for the "${userData.eventType}" event on ${userData.date}. We will contact you at ${userData.email}.`;
+          console.log("Server response:", data);
+          form.reset();
+          name.focus();
+        })
+        .catch(error => {
+          output.textContent = `❌ Registration failed. Please try again later.`;
+          console.error("Fetch error:", error);
+        });
+    }, 2000); // 2 second simulated delay
+  });
+
+  // Phone validation function
+  function validatePhone() {
+    const phoneInput = document.getElementById("phone");
+    const phoneError = document.getElementById("phoneError");
+    const phoneValue = phoneInput.value.trim();
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if (!phoneRegex.test(phoneValue)) {
+      phoneError.textContent = "Please enter a valid 10-digit phone number.";
+      phoneInput.style.border = "2px solid red";
+      return false;
+    } else {
+      phoneError.textContent = "";
+      phoneInput.style.border = "2px solid green";
+      return true;
+    }
+  }
+
+  // Extra utility: Video ready status
+  function videoReady() {
+    document.getElementById('videoStatus').textContent = "🎬 Video ready to play!";
+  }
+
+  // Warn on leaving with unsaved changes
+  window.onbeforeunload = function () {
+    if (
+      document.getElementById('name').value !== '' ||
+      document.getElementById('email').value !== '' ||
+      document.getElementById('phone').value !== ''
+    ) {
+      return "You have unsaved changes. Are you sure you want to leave?";
+    }
+  };
+
+  $(document).ready(function () {
+    $('#registerBtn').click(function () {
+      // Toggle event cards with fade animation
+      if ($('#eventCards').is(':visible')) {
+        $('#eventCards').fadeOut(500); // fade out if visible
+      } else {
+        $('#eventCards').fadeIn(500);  // fade in if hidden
+      }
+    });
+  });
+  
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+</body>
+</html>

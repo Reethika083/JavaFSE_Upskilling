@@ -1,0 +1,368 @@
+/* ---------------------------------------------
+   Header Styles
+   Affects the main headings of the page
+--------------------------------------------- */
+h1, h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+/* ---------------------------------------------
+   Form Container Styles
+   Centers and styles the entire form block
+--------------------------------------------- */
+form {
+  background: white;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------------------
+   Input, Select, Textarea, and Button Styles
+   Applies consistent styling to all form controls
+--------------------------------------------- */
+input, select, textarea, button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------
+   Confirmation Message Output
+   Styles the message shown after form submission
+--------------------------------------------- */
+#confirmation {
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
+
+/* ---------------------------------------------
+   Button Styles
+   CTA button for form submission
+--------------------------------------------- */
+button {
+  background-color: #28a745; /* Green button */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838; /* Darker on hover */
+}
+
+/* ---------------------------------------------
+   Universal Selector: Reset default spacing
+--------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------
+   Element Selector: Style all <h2> elements
+--------------------------------------------- */
+h2 {
+  font-size: 1.8rem;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------
+   ID Selector: Style the banner with ID #mainHeader
+--------------------------------------------- */
+#mainHeader {
+  background-color: #ffcc00;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* ---------------------------------------------
+   Class Selector: Style event containers with .eventCard
+--------------------------------------------- */
+.eventCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------------------
+   Grouping Selector: Common style for h3 and p
+--------------------------------------------- */
+h3, p {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* ---------------------------------------------
+   4. Color & Background Styling
+   Applies city council theming using HEX, RGBA, background image, and gradients
+--------------------------------------------- */
+
+/* Apply background image with fallback color */
+body {
+  background-color: #e6f0fa; /* Light blue fallback */
+  background-image: url('city-skyline.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgba(0, 0, 0, 0.85); /* Slightly transparent dark text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Gradient background for section headers */
+.section-header {
+  background: linear-gradient(to right, #004080, #66ccff); /* Navy to sky blue */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Optional: Gradient-styled heading text (modern look) */
+.gradient-text {
+  background: linear-gradient(to right, #004080, #66ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+/* ---------------------------------------------
+   5. Typography: Fonts and Text
+   Improves font appearance and readability
+--------------------------------------------- */
+
+/* Global font for general content */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* Main headings: Elegant serif look */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+
+/* Subheadings and labels */
+label, h4 {
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Paragraphs or description blocks */
+p.description, .eventCard p {
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.8;
+  letter-spacing: 0.4px;
+  text-align: justify;
+  color: #444;
+}
+
+/* Form input placeholder styling (optional) */
+input::placeholder, textarea::placeholder {
+  font-style: italic;
+  color: #999;
+}
+
+/* Button text styling */
+button {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* ---------------------------------------------
+   6. Link Styling
+   Customizes link appearance across states
+--------------------------------------------- */
+
+a:link {
+  color: #007BFF; /* Bright blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:visited {
+  color: #5a5a99; /* Muted purple/blue */
+}
+
+a:hover, a:active {
+  color: #0056b3; /* Darker blue */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+/* ---------------------------------------------
+   6. List Styling
+   Customize list bullets, spacing, and nav menu lists
+--------------------------------------------- */
+
+/* General unordered and ordered lists */
+ul, ol {
+  list-style-position: inside; /* Bullets/Numbers inside padding */
+  margin-left: 20px;
+  padding-left: 0;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Custom bullet type for UL */
+ul {
+  list-style-type: disc;
+}
+
+/* Custom number style for OL */
+ol {
+  list-style-type: decimal;
+}
+
+/* Remove bullets from nav menus (assumed class .nav or nav ul) */
+nav ul, .nav {
+  list-style-type: none; /* No bullets */
+  padding-left: 0;
+  margin: 0;
+  display: flex; /* Optional: horizontal nav menu */
+  gap: 15px;    /* space between items */
+}
+
+/* Add padding and margin to list items */
+li {
+  padding: 5px 10px;
+  margin-bottom: 8px;
+}
+
+
+/* Style the entire table */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Merge borders */
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center; /* Center text in all cells */
+}
+
+/* Style table headers */
+th {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  background-color: #007BFF; /* Blue header background */
+  color: white;
+  font-weight: 600;
+}
+
+/* Style table data cells */
+td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+}
+
+/* Zebra striping for even rows */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Optional: Hover effect for rows */
+tbody tr:hover {
+  background-color: #e6f0ff;
+}
+
+/* Add spacing and border to .eventCard */
+.eventCard {
+  border: 2px solid #007BFF;  /* Blue border for visibility */
+  padding: 20px;              /* Space inside the box */
+  margin: 20px 0;             /* Space outside: top and bottom */
+  border-radius: 8px;         /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2); /* subtle shadow */
+}
+
+/* Add outline to highlight selected form fields */
+input:focus, select:focus, textarea:focus {
+  outline: 3px solid #ff9900;  /* Orange outline on focus */
+  outline-offset: 2px;          /* space between element and outline */
+}
+
+/* Demonstrate difference between visibility: hidden and display: none */
+
+/* Example usage - hidden element but still takes space */
+.hidden-element {
+  visibility: hidden; /* Invisible but occupies space */
+}
+
+/* Example usage - element completely removed from layout */
+.no-display-element {
+  display: none; /* Removed from layout, no space taken */
+}
+
+.newsArticle {
+  column-count: 2;            /* Splits text into 2 columns */
+  column-gap: 30px;           /* Space between the columns */
+  column-rule: 1px solid gray; /* Vertical line between columns */
+  padding: 15px;              /* Optional padding inside the section */
+  font-family: 'Georgia', serif; /* Optional: nice readable font for articles */
+  line-height: 1.5;           /* Improves readability */
+}
+
+@media (max-width: 768px) {
+  /* Stack navigation links vertically */
+  nav ul {
+    display: flex;
+    flex-direction: column; /* vertical stacking */
+    padding: 0;
+  }
+
+  nav ul li {
+    margin-bottom: 10px; /* spacing between nav items */
+  }
+
+  /* Reduce image sizes */
+  img {
+    max-width: 100%;  /* image scales down to container width */
+    height: auto;     /* maintain aspect ratio */
+  }
+
+  /* Reduce font sizes for better fit */
+  body {
+    font-size: 90%;  /* smaller font size */
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2rem; /* smaller headings */
+  }
+
+  /* Flexible layout widths using percentages */
+  form, .eventCard {
+    width: 90%;  /* more fluid container widths */
+    margin: 0 auto; /* center align */
+  }
+}
