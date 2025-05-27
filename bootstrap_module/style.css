@@ -1,0 +1,5 @@
+@media (min-width: 768px) {
+  #mainContent {
+    margin-left: 210px; /* slightly more than sidebar width */
+  }
+}
